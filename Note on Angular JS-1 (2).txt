@@ -1,0 +1,354 @@
+Angular 6
+=====
+Angular is a framework for building client applications in HTML and either JavaScript or a language like TypeScript that compiles to JavaScript. 
+The framework consists of several libraries, some of them core and some optional.
+
+Reasons to use:
+---------------
+We can write Angular applications by composing HTML templates with Angularized markup, writing component classes to manage those templates, adding application logic in services, and boxing components and services in modules. 
+
+Angular makes HTML more expressive, It powers up HTML with features such as if conditions, for loops and local variables. 
+
+Angular has powerful data binding. We can easily display fields from our data model, track changes and process updates from the user.
+
+Angular promotes modularity by design so that the applications become a set of building blocks making it easier to create and reuse contents. 
+
+Angular has built-in support for communication with a backend service this makes it easy for Web applications to integrate with the backend service to GET and POST data or execute server side business logic. 
+
+
+
+To install Angular 6, we require the following −
+Nodejs
+Npm
+Angular CLI
+IDE for writing your code
+
+
+----------------
+Angular CLI(Command Line Interface) is a command line interface to scaffold and build angular apps using nodejs style (commonJs) modules. 
+
+You need to install using below npm command,
+npm install @angular/cli@latest
+
+Creating New Project: ng new
+
+To check installed angular version:
+>ng --version
+
+
+Creating New Project: ng new <projectname>
+
+Ex: ng new dempapp1
+? y
+?css ENTER
+
+** if project is created , check my computer==> there should be a folder named as your angular project ? Y/N
+
+to run this angular app:
+> cd dempapp1
+> ng serve      [ run app ]
+** it will provide you an URL & type this URL in web browser
+http://localhost:4200/
+
+**port can  change :   ng serve  --port 4242
+** to chanage host :  ng serve --host <hostip> --port <portno>
+
+
+
+
+Generating Components, Directives & Services: ng generate/g 
+The different types of commands would be,
+ng generate class my-new-class: add a class to your application
+ng generate component my-new-component: add a component to your application
+ng generate directive my-new-directive: add a directive to your application
+ng generate service my-new-service: add a service to your application
+
+Running the Project: ng serve
+
+------------------
+Create an app now:
+ng new my-dream-app  
+cd my-dream-app  
+ng serve   or    ng serve  --host hostip  --port portno
+You run : http://localhost:4200
+
+--------------------
+Project structure
+There are certain folders :
+1. node_modules:  all kinds node modules loaded by 'npm'
+2. package.json :  where all dependencies are mentioned
+3. check folder : src - has 2 subfolders
+a. app : most important folder with some important files:
+i. app.component.html --- provides html template for home page
+ii.app.component.ts -- it is typescript for this component
+iii. app.component.css -- stores all css pattern for your home
+iv. app.component.spec.ts -- optional ( for test framework)
+v. app.module.ts -- here all modules have tobe specified which are shared/used by any component within your anugular app
+vi. app-routing.module.ts -- this is for routing means change page to page by hyperlink
+
+b. assets :  holds all kinds of image/ audio / video
+
+
+-----
+Angular 6— Components 
+5 components there:
+app.component.css : css for your app
+app.component.html : most important component, the front page of your app. 
+app.component.spec.ts: This file is used for testing purpose only.
+app.component.ts : typescript as a class.
+
+----
+Angular  App files which are mainly used in your project are given below:
+src folder: This is the folder which contains the main code files related to your angular application.
+
+app folder: The app folder contains the files, you have created for app components.
+
+app.component.css: This file contains the cascading style sheets code for your app component.
+
+app.component.html: This file contains the html file related to app component. This is the template file which is used by angular to do the data binding.
+
+app.component.spec.ts: This file is a unit testing file related to app component. This file is used along with other unit tests. It is run from Angular CLI by the command ng test.
+
+app.component.ts: This is the most important typescript file which includes the view logic behind the component.
+
+app.module.ts: This is also a typescript file which includes all the dependencies for the website. This file is used to define the needed modules to be imported, the components to be declared and the main component to be bootstrapped.
+
+package.json: This is npm configuration file. It includes details about your website's package dependencies along with details about your own website being a package itself.
+
+assets folder: This folder is a placeholder for resource files which are used in the application such as images, locales, translations etc.
+
+main.ts:  this is the main ts file that will first run. This file bootstraps (starts) the AppModule from app.module.ts , and it can be used to define global configurations.
+
+styles.css:/ This is a global css file which is used by the angular application.
+
+
+Components
+-----
+Components are the most basic building block of an UI in an Angular application. 
+An Angular application is a tree of Angular components. 
+Every Angular application always has at least one component known as root component that connects a page hierarchy with page DOM. 
+
+Each component defines a class that contains application data and logic, and is associated with an HTML template that defines a view to be displayed in a target environment.
+
+Angular components are a subset of directives. 
+Unlike directives, components always have a template and only one component can be instantiated per an element in a template. 
+
+A component must belong to an NgModule in order for it to be usable by another component or application. 
+To specify that a component is a member of an NgModule, you should list it in the declarations field of that NgModule. 
+In addition to the metadata configuration specified via the Component decorator, components can control their runtime behavior by implementing various Life-Cycle hooks.
+
+Ex:
+import { Component } from '@angular/core';
+
+@Component ({
+   selector: 'my-app',
+   template: ` <div>
+      <h1>{{title}}</h1>
+      <div>Learn Angular6 with examples</div>
+   </div> `,
+})
+
+export class AppComponent {
+   title: string = 'Welcome to Angular world';
+}
+
+
+Components are a logical piece of code for Angular JS application. 
+A Component consists of the following − 
+1. Template − This is used to render the view for the application. This contains the HTML that needs to be rendered in the application. This part also includes the binding and directives. 
+2. Class − This is like a class defined in any language such as C. This contains properties and methods. This has the code which is used to support the view. It is defined in TypeScript. 
+3. Metadata − This has the extra data defined for the Angular class. It is defined with a decorator.
+
+We are using the import keyword to import the ‘Component’ decorator from the angular/core module. 
+We are then using the decorator to define a component. 
+The component has a selector called ‘my-app’. 
+This is nothing but our custom html tag which can be used in our main html page.
+<body> <my-app></my-app> </body>
+
+we can specify template for a component by 2 ways :
+
+1. templateUrl: 'filehtml'
+2. template: `html code `
+
+@Component({
+  selector: 'app-root',
+  //templateUrl: './app.component.html',
+  template: ` <hr>God <hr>`,
+  styleUrls: ['./app.component.css']
+})
+
+
+Component Meta-Data:
+=======
+Meta data tells angular how to process a class.
+To tell angular that AppComponent is a component, attach meta data to class. Here the decorator @Component identifies the class as well as give meta data info also.
+The keyword 'exports' is used to export this component to use in another components.
+
+@Component meta data contains configuration like : selector , template , templateUrl etc.
+
+create a new component::::::::::::
+
+Go to  project source folder>> Expand the app directory and create a new directory named "server".
+create the component within server directory. 
+Right click on the server directory and create a new file named as "server.component.ts". 
+
+To create a new component , command:
+ng generate component <componentname>
+OR 
+ng g c <componentname>
+
+which makes these files as:
+<componentname>.component.css  
+<componentname>.component.html  
+<componentname>.component.spec.ts  
+<componentname>.component.ts  
+
+
+
+Component Life cycle
+------------------------
+In Angular, every component has a life-cycle, a number of different stages it goes through. 
+There are 8 different stages in the component lifecycle. Every stage is called as lifecycle hook event.
+These stages are mainly divided into two phases – one is linked to the component itself and another is linked to the children of that component.
+
+ngOnChanges – This event executes every time when a value of an input control within the component has been changed. 
+
+ngOnInit – This event initializes after Angular first displays the data-bound properties or when the component has been initialized. This event is basically called only after the ngOnChanges()events. This event is mainly used for the initialize data in a component.
+
+ngDoCheck – This event is triggered every time the input properties of a component are checked. We can use this hook method to implement the check with our own logic check. Basically, this method allows us to implement our own custom change detection logic or algorithm for any component.
+
+ngAfterContentInit –  This lifecycle method is executed when Angular performs any content projection within the component views. This method executes when all the bindings of the component need to be checked for the first time. This event executes just after the ngDoCheck() method. This method is basically linked with the child component initializations.
+
+ngAfterContentChecked – This lifecycle hook method executes every time the content of the component has been checked by the change detection mechanism of Angular. This method is called after the ngAfterContentInit() method. This method is also called on every subsequent execution of ngDoCheck(). This method is also mainly linked with the child component initializations.
+
+ngAfterViewInit – This lifecycle hook method executes when the component’s view has been fully initialized. This method is initialized after Angular initializes the component’s view and child views. It is called after ngAfterContentChecked(). This lifecycle hook method only applies to components.
+
+ngAfterViewChecked – This method is called after the ngAterViewInit() method. It is executed every time the view of the given component has been checked by the change detection algorithm of Angular. This method executes after every subsequent execution of the ngAfterContentChecked(). This method also executes when any binding of the children directives has been changed. So this method is very useful when the component waits for some value which is coming from its child components.
+
+ngOnDestroy – This method will be executed just before Angular destroys the components. This method is very useful for unsubscribing from the observables and detaching the event handlers to avoid memory leaks. Actually, it is called just before the instance of the component is finally destroyed. This method is called just before the component is removed from the DOM.
+
+
+Sample code of app.component.lifecycle.ts
+
+import { Component } from '@angular/core';
+@Component({
+    moduleId: module.id,
+    selector: 'lifecycle-sample',
+    templateUrl: 'app.component.lifecycle.html'
+})
+export class LifeCycleComponent {    
+    data:number=100;
+    constructor() {
+        console.log(`new - data is ${this.data}`);
+    }
+    ngOnChanges() {
+        console.log(`ngOnChanges - data is ${this.data}`);
+    }
+    ngOnInit() {
+        console.log(`ngOnInit  - data is ${this.data}`);
+    }
+    ngDoCheck() {
+        console.log("ngDoCheck")
+    }
+    ngAfterContentInit() {
+        console.log("ngAfterContentInit");
+    }
+    ngAfterContentChecked() {
+        console.log("ngAfterContentChecked");
+    }
+    ngAfterViewInit() {
+        console.log("ngAfterViewInit");
+    }
+    ngAfterViewChecked() {
+        console.log("ngAfterViewChecked");
+    }
+    ngOnDestroy() {
+        console.log("ngOnDestroy");
+    }
+    fnAddNumber():void{
+        this.data+=100;
+    }
+    deleteNumber():void{
+        this.data -=10;
+    }
+}
+
+Sample code of app.component.lifecycle.html
+
+    <span class="setup">Given Number</span>
+    <h1 class="punchline">{{ data }}</h1>
+  <button type="button" class="btn btn-success"
+          (click)="fnAddNumber()">Add NUmber
+  </button>
+  <button type="button"
+          class="btn btn-danger"
+          (click)="deleteNumber()">Clear Number
+  </button>
+
+check the output from browser......
+
+
+
+========Data Binding
+
+Data binding is a core concept in Angular and allows to define communication between a component and the DOM, making it very easy to define interactive applications without worrying about pushing and pulling data. 
+
+Databinding is necessary because when we write the code in TypeScript, it is compiled to JavaScript and the result is shown on HTML layout. 
+
+Thus, to show the correct and spontaneous result to the users, a proper communication is necessary. That's why databinding is used in Angular.
+
+There is two type of databinding:
+------------------
+One-way databinding : a simple one way communication where HTML template is changed when we make changes in TypeScript code. 
+In one-way databinding, the value of the Model is used in the View (HTML page) but you can't update Model from the View. 
+
+Two-way databinding : automatic synchronization of data happens between the Model and the View. 
+Here, change is reflected in both components. 
+Whenever you make changes in the Model, it will be reflected in the View and when you make changes in View, it will be reflected in Model. 
+
+Interpolation is a special syntax that Angular converts into property binding. 
+It’s a convenient alternative to property binding. 
+It is represented by double curly braces({{}}). 
+The text between the braces is often the name of a component property. 
+
+Like:  <h3>  {{title}} </h3>
+
+one-way binding : Adds the value of a property from the component , 
+<li>Name: {{ user.name }}</li>
+
+
+Two-way binding:  allows to have the data flow both ways.
+For example, in the below code snippet, both the email DOM input and component email property are in sync
+<input type="email" [(ngModel)]="user.email">
+
+
+
+
+
+But to use this (ngModel) , we need to include 'FormsModule', 
+here importing in app.module.ts file as:
+import {FormsModule} from '@angular/forms';
+
+
+Event binding: When a specific DOM event happens (eg.: click, change, keyup), call the specified method in the component
+<button (click)="logout()"></button>
+
+
+-------Event Binding
+
+OPen home's ts file and add a new event : click as 
+
+click1() {
+    console.log('clicked-1');
+    alert('God Goddess are good....');
+    
+  }
+
+OPen home's html file and add a new control for triggering this event: click as 
+
+<p>home works!</p>
+<hr>
+<button (click)="click1()">Click me</button>
+
+save both files and then test from browser.
+
